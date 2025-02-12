@@ -12,8 +12,11 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.1
 Imports: 
     dplyr,
-    httr,
     lubridate,
     readr,
     stringr,
     tidyr
+Collate: 
+    'downloaducdp.R'
+    'acdtomonthly.R'
+    'gedprep.R'

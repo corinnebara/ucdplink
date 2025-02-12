@@ -5,9 +5,12 @@
 #' @return The dataset as an object (dataframe) in the global environment
 #' @keywords internal
 #'
+#' @importFrom utils download.file unzip
+#'
 #' @examples
-#' downloaducdp("acd")
-#' downloaducdp("osv")
+#' \dontrun{
+#'   downloaducdp("acd")
+#' }
 downloaducdp <- function(dataset) {
   # Ensure the dataset name is lowercase and valid.
   valid_datasets <- c("acd", "ged", "osv", "nsv")
@@ -55,7 +58,7 @@ downloaducdp <- function(dataset) {
   }
 
   # Assign the data frame to the global environment with the name of the dataset.
-  assign(dataset, data_obj, envir = .GlobalEnv)
+  return(data_obj)
 
   # Clean up the temporary files for later.
   unlink(c(temp_zip, temp_dir), recursive = TRUE)

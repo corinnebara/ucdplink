@@ -1,33 +1,35 @@
 
-# Later add Roxygen tags for dplyr, tidyr,stringr,readr, and lubridate
-# acd_to_monthly <- function(
-#     ucdpversion = "latest",              # User choice: dataset version. Default is "latest" (now: 241), user can choose also 241, 231, 221, 211
-#     postwar_months = 0,                  # Maximum postwar months to include, default is only active months.
-#     include_alqaida = FALSE,             # Optional: Include conflict 418 (US-al-Qaida), default is to exclude.
-#     start_year = NULL,                   # Optional: Specify the start year. Default: 1989. warnings implemented if wrong choice
-#     end_year = NULL                      # Optional: Specify the end year. Default: longest possible in version. warnings implmented if wrong choice
-# ) {
+# Later add Roxygen tags for dplyr,tidyr,stringr,readr, and lubridate
+# export
+#' Function to turn UCDP annual conflict data into a conflict-month dataset
+#'
+#' @param postwar_months Maximum postwar months to include, default is only active months. Put 5000 if you want all possible postwar months in the data.
+#' @param include_alqaida Optional: Include conflict 418 (US-al-Qaida), default is to exclude.
+#' @param start_year Optional: Specify the start year. Default: 1989.
+#' @param end_year Specify the end year. Default: longest possible in version (currently 2023).
+#'
+#' @return Basedata, a conflict-month dataset
+#' @export
+#'
+#' @import dplyr
+#' @import tidyr
+#' @import stringr
+#' @import readr
+#' @import lubridate
+#'
+#' @examples
+#' acdtomonthly(postwar_months = 5000)
+#' acdtomonthly(start_year = 2015, end_year = 2023,include_alqaida = TRUE,postwar_months = 24)
+#' acdtomonthly()
+acdtomonthly <- function(
+    postwar_months = 0,
+    include_alqaida = FALSE,
+    start_year = NULL,
+    end_year = NULL
+) {
 
-
-  # Open UCDP data via API
-  data-https://ucdpapi.pcr.uu.se/api/<resource>/<version>?<pagesize=x>&<page=x>
-
-    https://ucdp.uu.se/downloads/ucdpprio/ucdp-prio-acd-241-rds.zip
-
-  # Set directory to pull the external UCDP data
-  extdir <- file.path("extdata", "acd")
-  savedir <- file.path("datacreated")
-
-  # Identify the latest version if `ucdpversion == "latest"`
-  if (ucdpversion == "latest") {
-    files <- list.files(extdir, pattern = "ucdp-prio-acd-\\d+\\.rds")
-    versions <- as.numeric(stringr::str_extract(files, "\\d+"))
-    latest_version <- max(versions, na.rm = TRUE)
-    ucdpversion <- as.character(latest_version)
-  }
-
-  # Load the dataset
-  acd <- read_rds(file.path(extdir, paste0("ucdp-prio-acd-", ucdpversion, ".rds")))
+  # Use helper function to download ACD
+  acd <- downloaducdp("acd")
 
   # Dynamically determine the range of years in the dataset
   min_year <- max(1989, min(acd$year, na.rm = TRUE))  # Minimum year (at least 1989)
@@ -174,6 +176,8 @@
     ungroup()
 
   # Save and return (also as an exact copy that we later use to link violence to)
-  write_rds(acdbig, file = file.path(savedir, paste0("UCDP_conflict_month_basedata_v", ucdpversion, ".rds")))
-  return(acdbig)
-# }
+  basedata <- acdbig
+  rm(acd)
+  return(basedata)
+}
+
