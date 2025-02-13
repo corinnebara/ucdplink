@@ -46,3 +46,5 @@ Collate:
     'spatiallink.R'
     'finalize.R'
     'ucdplink.R'
+URL: https://github.com/corinnebara/ucdplink
+BugReports: https://github.com/corinnebara/ucdplink/issues
