@@ -2,9 +2,13 @@
 
 export(acdtomonthly)
 export(gedprep)
+import(cshapes)
 import(dplyr)
+import(furrr)
+import(future)
 import(lubridate)
 import(readr)
+import(sf)
 import(stringr)
 import(tidyr)
 importFrom(utils,download.file)

@@ -15,8 +15,16 @@ Imports:
     lubridate,
     readr,
     stringr,
-    tidyr
+    tidyr,
+    purrr,
+    sf,
+    cshapes,
+    future,
+    furrr
 Collate: 
     'downloaducdp.R'
     'acdtomonthly.R'
     'gedprep.R'
+    'makezones.R'
+    'actorlink.R'
+    'intersect.R'

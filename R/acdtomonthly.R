@@ -1,6 +1,3 @@
-
-# Later add Roxygen tags for dplyr,tidyr,stringr,readr, and lubridate
-# export
 #' Function to turn UCDP annual conflict data into a conflict-month dataset
 #'
 #' @param postwar_months Maximum postwar months to include, default is only active months. Put 5000 if you want all possible postwar months in the data.
@@ -178,6 +175,7 @@ acdtomonthly <- function(
   # Save and return (also as an exact copy that we later use to link violence to)
   basedata <- acdbig
   rm(acd)
-  return(basedata)
+  return(basedata) # for the polygon processing in next step
+
 }
 

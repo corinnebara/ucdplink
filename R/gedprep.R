@@ -5,7 +5,11 @@
 #' @return UCDP GED processed (with more rows than the original)
 #' @export
 #'
-#' @import dplyr tidyr stringr lubridate readr
+#' @import dplyr
+#' @import tidyr
+#' @import stringr
+#' @import lubridate
+#' @import readr
 #'
 #' @examples
 #' gedprep()
@@ -280,10 +284,10 @@ gedprep <- function() {
   ged <- bind_rows(ged1, ged2, ged3)
 
   # Drop some variables not needed in the next steps to make the dataset smaller
-  ged <- ged %>%
+  gedprepped <- ged %>%
     select(-active_year, -conflict_dset_id, -conflict_name, -dyad_dset_id,
            -dyad_name, -side_a, -side_b, -where_coordinates, -priogrid_gid, -country)
 
   # Save the final prepared GED (also as a stripped version that we later use to track how every event was linked)
-  return(ged)
+  return(gedprepped)
 }
