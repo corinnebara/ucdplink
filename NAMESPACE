@@ -2,6 +2,7 @@
 
 export(acdtomonthly)
 export(gedprep)
+export(ucdplink)
 import(cshapes)
 import(dplyr)
 import(furrr)

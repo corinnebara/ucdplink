@@ -33,15 +33,17 @@ downloaducdp <- function(dataset) {
   # Create a temporary file to save the ZIP file.
   temp_zip <- tempfile(fileext = ".zip")
 
-  # Download the ZIP file (binary mode is important on Windows).
-  download.file(url, destfile = temp_zip, mode = "wb")
+  # Download the ZIP file quietly (binary mode is important on Windows).
+  download.file(url, destfile = temp_zip, mode = "wb", quiet = TRUE)
 
   # Create a temporary directory to unzip the contents.
   temp_dir <- tempfile()
   dir.create(temp_dir)
 
-  # Unzip the downloaded file into the temporary directory.
-  unzip(temp_zip, exdir = temp_dir)
+  # Unzip the downloaded file into the temporary directory quietly.
+  suppressMessages({
+    unzip(temp_zip, exdir = temp_dir)
+  })
 
   # Look for the RDS file in the temporary directory.
   rds_files <- list.files(temp_dir, pattern = "\\.rds$", full.names = TRUE)

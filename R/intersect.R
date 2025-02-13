@@ -28,7 +28,6 @@ intersect <- function(gedprepped,episode_zones) {
   # Prepare intersection
   gedspace <- st_as_sf(ged, coords = c("longitude", "latitude"),  crs = 4326)
   gedspace <- st_make_valid(gedspace)
-  message("Making intersection. Have a coffee, this likely takes close to 10 min or more, depending on the number of available cores on your machine")
 
   # Make the intersection, speed up with parallel computing
   compute_intersection <- function(gedspace, episode_zones) {
@@ -45,7 +44,6 @@ intersect <- function(gedprepped,episode_zones) {
     chunks <- split(gedspace, cut(seq_len(nrow(gedspace)), n_cores, labels = FALSE))
 
     # Perform parallel intersection
-    message("Performing intersections using ", n_cores, " cores...")
     intersections <- future_map(chunks, ~ st_intersection(.x, episode_zones))
 
     # Combine results into a single sf object
@@ -56,13 +54,9 @@ intersect <- function(gedprepped,episode_zones) {
 
   gedinter <- compute_intersection(gedspace, episode_zones)
 
-  message("Intersection completed. Finishing up...")
-
   # Check and save (rename variables that were attached by the zones, e.g., info comes from conflict zones). # Unique identifier: idsplit,side_a_new_id,side_b_new_id,z_conf_id
-  gedinter <- gedinter %>% rename(z_conf_id = epi_id,
-                                  z_geometry = geometry)
+  gedinter <- gedinter %>% rename(z_conf_id = epi_id) %>% st_drop_geometry()
 
   # Return the intersection. It contains ALL Type 2/3 violence, also the type we link by actor
   return(gedinter)
-  message("Done")
 }

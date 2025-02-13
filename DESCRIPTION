@@ -28,3 +28,6 @@ Collate:
     'makezones.R'
     'actorlink.R'
     'intersect.R'
+    'spatiallink.R'
+    'finalize.R'
+    'ucdplink.R'

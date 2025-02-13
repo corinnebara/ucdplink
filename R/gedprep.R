@@ -16,7 +16,6 @@
 gedprep <- function() {
 
   # Use helper function to load GED, OSV, and NSV datasets needed in this code
-  message("Step 1: Loading UCDP GED, as well as one-sided and non-state violence datasets...")
   ged <- downloaducdp("ged")
   osv <- downloaducdp("osv")
   nsv <- downloaducdp("nsv")
@@ -65,8 +64,6 @@ gedprep <- function() {
            nsv_side_b_components = ifelse(type_of_violence != 2, NA, nsv_side_b_components))
 
   # Step 2: Split Events by Month
-  message("Step 1 complete: Datasets loaded and pre-processed.")
-  message("Step 2: Splitting multi-month events into separate rows... this may take a moment!")
 
   # Standardize start and end dates to the first of each month
   ged$date_start <- format(as.Date(ged$date_start, '%Y/%m/%d'), "%Y-%m-01")
@@ -113,8 +110,6 @@ gedprep <- function() {
     ungroup()
 
   # Step 3: Process GED for OSV and NSV
-  message("Step 2 complete: Events split by month.")
-  message("Step 3: Splitting events by coalition actors and dividing fatalities between them...")
 
   # Remove unnecessary columns
   ged <- ged %>% select(-c(one, nummonths))
@@ -255,8 +250,6 @@ gedprep <- function() {
     ungroup()
 
   # Ensure same class in all subsets
-  message("Step 3 complete: Coalition actors done.")
-  message("Finishing up...")
 
   ged1 <- ged1 %>% mutate(
     side_a_new_id = as.character(side_a_new_id),
