@@ -39,7 +39,8 @@ A conflict-month dataset based on UCDP conflict data, with casualty counts from 
 Creates a UCDP conflict-month dataset with information on various forms of violence from UCDP GED, linked via actors or space
 }
 \examples{
-ucdplink()
-ucdplink(postwar_months = 5000, include_gedtrack = TRUE)
-ucdplink(postwar_months = 24, include_alqaida = TRUE, start_year = 1993, end_year = 2005, buffer_percent = 20, clipcountry = FALSE, divide_deaths = TRUE, include_gedtrack = TRUE)
+ucdplink(include_alqaida = FALSE, start_year = 1999, end_year = 2010, include_gedtrack = TRUE)
+\dontrun{
+  ucdplink(postwar_months = 24, buffer_percent = 20, clipcountry = FALSE, divide_deaths = TRUE)
+}
 }
