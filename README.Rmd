@@ -5,6 +5,7 @@ output: github_document
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 ```{r, include = FALSE}
+devtools::load_all(".")
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
@@ -15,13 +16,13 @@ knitr::opts_chunk$set(
 
 # ucdplink
 
-<!-- badges: start -->
+The goal of **ucdplink** is to link data on violent events from the Uppsala Conflict Data Program (UCDP) Georeferenced Event Dataset (GED) to armed conflicts listed in the UCDP Armed Conflict Dataset (ACD).
 
-<!-- badges: end -->
+The rationale for this procedure is described in the article:
 
-The goal of ucdplink is to link data on violent events from the Uppsala Conflict Data Program (UCDP) Georeferenced Event Dataset (GED) to armed conflicts listed in the UCDP Armed Conflict Dataset (ACD).
+Bara, Corinne & Maurice P. Schumann, "Who, what, and where? Linking violence to civil wars", Research & Politics (2025).
 
-The rationale for this procedure is described in the article: Bara, Corinne & Maurice P. Schumann, "Who, what, and where? Linking violence to civil wars", Research & Politics (2025). In brief: Civil wars are more than battles between governments and rebels; they involve a multitude of actors who perpetrate different forms of violence linked to the war in some way. In practice, however, linking various forms of violence to one another and attributing them to a specific civil war remains a challenge, conceptually and practically. The ucdplink package solves the practical aspects of the violence attribution problem and links casualty counts from different forms of war-related violence to specific civil wars using information on the actors involved in the event, and on the event location.
+**The logic in brief:** Civil wars are more than battles between governments and rebels; they involve a multitude of actors who perpetrate different forms of violence linked to the war in some way. In practice, however, linking various forms of violence to one another and attributing them to a specific civil war remains a challenge, conceptually and practically. The ucdplink package solves the practical aspects of the violence attribution problem and links casualty counts from different forms of war-related violence to specific civil wars using information on the actors involved in the event, and on the event location.
 
 The main function **ucdplink** takes the UCDP/PRIO Armed Conflict Dataset (ACD) and turns it from annual data into a conflict-month dataset. It then takes the UCDP Georeferenced Event Dataset (GED) and links casualties from different forms of violence (state-based, one-sided, non-state) to the conflict episodes in which this violence (most likely) takes place. The linking is done via the actors involved in the violence, and - if that is not possible - via the location of the event, using information on the location of conflicts from the WZONE Conflict Zones Data. The result is a conflict-month dataset with information on monthly casualties from various forms of violence, explained in detail in the Codebook.
 
@@ -29,7 +30,7 @@ Two helper functions used in the process may be useful for users even if they ar
 
 The function **acdtomonthly** takes the UCDP ACD, which is annual conflict data, and turns it into a conflict-month dataset with some user-chosen parameters.
 
-The function **gedprep** takes the UCDP GED and performs some common data wrangling steps, namely splitting multi-month events into separate monthly events with casualties evenly divided between them, and splitting events perpetrated by coalition actors among the coalition-constituting actors, again with casualties evenly divided between them.
+The function **gedprep** takes the UCDP GED and performs some common data wrangling steps, namely splitting multi-month events into separate monthly events with casualty counts evenly divided between them, and splitting events perpetrated by coalition actors among the coalition-constituting actors, again with casualty counts evenly divided between them.
 
 The package currently processes UCDP data versions 24.1. When using this package, make sure you correctly cite the source data.
 
@@ -41,10 +42,12 @@ For the function **ucdplink**: Cite both the above, and in addition the WZONE co
 
 ## Installation
 
-You can install the package as follows:
+You can install the package from github as follows:
 
 ``` r
-# FILL THIS IN! HOW CAN PEOPLE INSTALL YOUR DEV PACKAGE?
+library(devtools)
+
+devtools::install_github("corinnebara/ucdplink")
 ```
 
 You also need the `dplyr`, `tidyr`, `stringr`, `readr`, `lubridate`, `sf`, `cshapes`, `future`, and `furrr` packages. R will try to install these dependencies if not already installed.
@@ -69,7 +72,7 @@ The function takes the following arguments:
 
 -   include_gedtrack: Whether to also return a version of GED in which event has information on how it was linked to the conflict-month dataset. Default is to not include.
 
-```{r example1}
+```{r example1, eval = FALSE}
 linkeddata <- ucdplink(postwar_months = 12, include_alqaida = TRUE, start_year = 1999, end_year = 2010, buffer_percent = 10, clipcountry = FALSE, divide_deaths = TRUE, include_gedtrack = TRUE)
 ```
 
@@ -85,7 +88,7 @@ The function takes the following arguments:
 
 -   end_year: Specify the end year. Default: longest possible (currently 2023).
 
-```{r example2}
+```{r example2, eval = FALSE}
 monthlydata <- acdtomonthly(postwar_months = 24, include_alqaida = TRUE, start_year = 1993, end_year = 2020)
 ```
 
@@ -93,6 +96,6 @@ monthlydata <- acdtomonthly(postwar_months = 24, include_alqaida = TRUE, start_y
 
 The function takes no arguments:
 
-```{r example3}
+```{r example3, eval = FALSE}
 preppedged <- gedprep()
 ```
