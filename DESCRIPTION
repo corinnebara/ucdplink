@@ -1,12 +1,26 @@
 Package: ucdplink
-Title: What the Package Does (One Line, Title Case)
-Version: 0.0.0.9000
-Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
+Title: Links Violence from UCDP GED to Conflicts in the UCDP ACD
+Version: 1.0.0
+Authors@R: c(
+  person("Corinne", "Bara", email = "corinne.bara@sipo.gess.ethz.ch",
+         role = c("aut", "cre"),
+         comment = c(ORCID = "0000-0001-9831-0573")),
+  person("Maurice P.", "Schumann", email = "m.schumann@phd.hertie-school.org",
+         role = "ctb",
+         comment = c(ORCID = "0009-0004-0400-388X")))
+Description: The package links data on violent events from the Uppsala Conflict Data Program (UCDP) Georeferenced Event Dataset
+	(GED) to armed conflicts listed in the UCDP Armed Conflict Dataset (ACD). Two functions first turn the UCDP ACD into a
+	conflict-month dataset, and conduct some common data wrangling on the UCDP GED. The latter includes splitting multi-month
+	events into separate months, with casualties divided between them. It also includes splitting casualties from violence
+	perpetrated by coalition actors evenly between the actors. Casualties from violent events in UCDP GED are then linked 
+	(aggregated to the month) to conflicts via actor identifiers where possible, and via the event location otherwise. This 
+	includes all forms of violence coded in UCDP GED, including state-based violence (battles), one-sided violence against
+	civilians, and non-state violence (communal violence, inter-rebel fighting). The end result is a conflict-month dataset with
+	information on battle and war-related violence, as described in the article: Bara, Corinne & Maurice P. Schumann, "Who, what, 
+	and where? Linking violence to civil wars", Research & Politics (2025).
+License: GPL-3
+Note: This package is distributed under GPL-3. The final dataset produced by the package is licensed under Creative Commons 
+	Attribution 4.0 International (CC BY 4.0).
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.1
@@ -22,6 +36,7 @@ Imports:
     future,
     furrr
 Collate: 
+    'globals.R'
     'downloaducdp.R'
     'acdtomonthly.R'
     'gedprep.R'

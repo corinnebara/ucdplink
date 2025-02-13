@@ -2,7 +2,7 @@
 % Please edit documentation in R/acdtomonthly.R
 \name{acdtomonthly}
 \alias{acdtomonthly}
-\title{Function to turn UCDP annual conflict data into a conflict-month dataset}
+\title{Function to turn UCDP annual conflict data into a conflict-month dataset.}
 \usage{
 acdtomonthly(
   postwar_months = 0,
@@ -21,10 +21,17 @@ acdtomonthly(
 \item{end_year}{Specify the end year. Default: longest possible in version (currently 2023).}
 }
 \value{
-Basedata, a conflict-month dataset
+A conflict-month dataset based on UCDP data.
 }
 \description{
-Function to turn UCDP annual conflict data into a conflict-month dataset
+Function to turn UCDP annual conflict data into a conflict-month dataset.
+}
+\note{
+When using this function, please ensure that you correctly attribute the source data:
+
+UCDP/PRIO Armed Conflict Dataset version 24.1 from the Uppsala Conflict Data Program.
+
+For citation details, refer to the UCDP website: https://ucdp.uu.se/downloads/
 }
 \examples{
 acdtomonthly(postwar_months = 5000)

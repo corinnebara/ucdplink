@@ -1,11 +1,11 @@
-#' Function to turn UCDP annual conflict data into a conflict-month dataset
+#' Function to turn UCDP annual conflict data into a conflict-month dataset.
 #'
 #' @param postwar_months Maximum postwar months to include, default is only active months. Put 5000 if you want all possible postwar months in the data.
 #' @param include_alqaida Optional: Include conflict 418 (US-al-Qaida), default is to exclude.
 #' @param start_year Optional: Specify the start year. Default: 1989.
 #' @param end_year Specify the end year. Default: longest possible in version (currently 2023).
 #'
-#' @return Basedata, a conflict-month dataset
+#' @return A conflict-month dataset based on UCDP data.
 #' @export
 #'
 #' @import dplyr
@@ -13,6 +13,10 @@
 #' @import stringr
 #' @import readr
 #' @import lubridate
+#'
+#' @note When using this function, please ensure that you correctly attribute the source data:
+#' @note UCDP/PRIO Armed Conflict Dataset version 24.1 from the Uppsala Conflict Data Program.
+#' @note For citation details, refer to the UCDP website: https://ucdp.uu.se/downloads/
 #'
 #' @examples
 #' acdtomonthly(postwar_months = 5000)

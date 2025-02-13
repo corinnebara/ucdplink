@@ -1,6 +1,8 @@
-#' Takes UCDP GED and processes it to:
-#' a) divide multi-month events into separate one-month events (fatalities evenly divided between them)
-#' b) divide events by coalition actors to the coalition-constituting actors (fatalities evenly divided between them)
+#' Process UCDP GED Data for Event Splitting and Coalition Attribution
+#'
+#' This function processes UCDP GED data to:
+#' - **(a)** Divide multi-month events into separate one-month events (with fatalities evenly divided among the months).
+#' - **(b)** Divide events by coalition actors among the coalition-constituting actors (with fatalities evenly divided between them).
 #'
 #' @return UCDP GED processed (with more rows than the original)
 #' @export
@@ -10,6 +12,10 @@
 #' @import stringr
 #' @import lubridate
 #' @import readr
+#'
+#' @note When using this function, please ensure that you correctly attribute the source data:
+#' @note UCDP Georeferenced Event Dataset (GED) Global version 24.1 from the Uppsala Conflict Data Program.
+#' @note For citation details, refer to the UCDP website: https://ucdp.uu.se/downloads/
 #'
 #' @examples
 #' gedprep()

@@ -31,7 +31,7 @@ makezones <- function(
 ) {
 
   # Locate and unzip the wzone shapefiles
-  wzone_zip <- system.file("extdata", "wzone.zip", package = "toyacd")
+  wzone_zip <- system.file("extdata", "wzone.zip", package = "ucdplink")
   if (wzone_zip == "") {
     stop("wzone.zip not found in the package's extdata folder.")
   }

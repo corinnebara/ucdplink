@@ -1,0 +1,31 @@
+if (getRversion() >= "2.15.1") {
+  utils::globalVariables(c(
+    ".", "active", "active_year", "activeepisodes", "actor_id", "actor_id.x", "actor_id.y",
+    "avg_width", "battledeaths", "best", "best_divided", "best_fatality_estimate",
+    "best_sum", "buffer_distance", "coalition_components", "coalition_id", "coalosv",
+    "collateralciv", "combatantosv", "communal", "conf_id", "conf_in_which_osv",
+    "confcountry", "confgov", "confgovosv", "conflict_dset_id", "conflict_epi_id",
+    "conflict_id", "conflict_id.x", "conflict_id.y", "conflict_name", "conflict_new_id",
+    "conflict_nsv_b_id", "conflict_nsv_id", "confzone_id", "country", "country_id",
+    "crap_id", "cumulative_intensity", "date_end", "date_new", "date_prec", "date_start",
+    "deaths_civilians", "deaths_civilians_divided", "dyad_dset_id", "dyad_id",
+    "dyad_name", "dyad_new_id", "end", "end_temp", "ep_end", "ep_end_date", "ep_end_prec",
+    "epi_id", "epicount", "event_count", "eventscountry", "existingmonths",
+    "fight_in_conf_id", "final_date", "geom_wkt", "geometry", "govosv", "gwcode", "gwno_a",
+    "gwno_a_2nd", "gwno_b", "gwno_b_2nd", "gwno_loc", "gwnoa", "gwnob", "haszone", "idsplit",
+    "incompatibility", "intensity_level", "internsag", "internsag_collciv", "interreb",
+    "interreb_collciv", "is_government_actor", "latitude", "link_actor_interreb",
+    "link_actor_rebosv", "link_actor_type1", "link_spatial_communal", "link_spatial_confgovosv",
+    "link_spatial_govosv", "link_spatial_internsag", "link_spatial_nsagosv", "link_spatial_zone_nsv",
+    "link_spatial_zone_osv", "link_spatial_zone_wrv", "linkedconflictmonths", "longitude", "mdate",
+    "missingzone", "month_year", "nsagosv", "nsv_org", "nsv_side_a_components", "nsv_side_b_components",
+    "nsvid", "numdiff", "nummonths", "one", "org", "original", "original_area", "osv_coalition_components",
+    "osv_is_gov_actor", "postwarmonth", "priogrid_gid", "pwmonth", "rebelosv", "region", "relevantcountries",
+    "scaling_factor", "shapefile_created", "side_a", "side_a_2nd", "side_a_components", "side_a_id",
+    "side_a_name", "side_a_new_id", "side_b", "side_b_2nd", "side_b_components", "side_b_id", "side_b_name",
+    "side_b_new_id", "sideb_constant", "source_z", "start_date", "start_date2", "start_prec", "start_prec2",
+    "start_temp", "startyear", "target_area", "territory_name", "type_of_conflict", "type_of_violence",
+    "where_coordinates", "where_prec", "z_conf_id", "z_sidea", "zone_nsv", "zone_nsv_collciv",
+    "zone_osv", "zone_wrv", "zone_wrv_civ"
+  ))
+}

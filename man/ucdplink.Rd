@@ -2,7 +2,7 @@
 % Please edit documentation in R/ucdplink.R
 \name{ucdplink}
 \alias{ucdplink}
-\title{Creates a UCDP conflict-month dataset with information on various forms of violence from UCDP GED, linked via actors or space}
+\title{Creates a UCDP conflict-month dataset with information on various forms of violence from UCDP GED, linked via actors or location.}
 \usage{
 ucdplink(
   postwar_months = 0,
@@ -30,13 +30,28 @@ ucdplink(
 
 \item{divide_deaths}{For events that fall into multiple conflict zones: use full casualties in each or divide deaths between the conflicts? Default is to use full.}
 
-\item{include_gedtrack}{Whether to also return a version of GED in which event has information on how it was linked to the conflict-month dataset.}
+\item{include_gedtrack}{Whether to also return a version of GED in which event has information on how it was linked to the conflict-month dataset. Default is FALSE.}
 }
 \value{
-A conflict-month dataset based on UCDP conflict data, with casualty counts from various forms of violence from UCDP GED
+A conflict-month dataset with casualty counts from various forms of violence
 }
 \description{
-Creates a UCDP conflict-month dataset with information on various forms of violence from UCDP GED, linked via actors or space
+Creates a UCDP conflict-month dataset with information on various forms of violence from UCDP GED, linked via actors or location.
+}
+\note{
+The code in this package is licensed under GPL-3, but the final dataset produced is licensed under CC BY 4.0.
+
+When using this function, please ensure that you correctly attribute the source data:
+
+UCDP/PRIO Armed Conflict Dataset version 24.1 from the Uppsala Conflict Data Program.
+
+UCDP Georeferenced Event Dataset (GED) Global version 24.1 from the Uppsala Conflict Data Program.
+
+For UCDP citation details, refer to the UCDP website: https://ucdp.uu.se/downloads/
+
+WZONE: Zones of Armed Conflicts v9.0
+
+For WZONE citation details see https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/PUWJEU
 }
 \examples{
 ucdplink(include_alqaida = FALSE, start_year = 1999, end_year = 2010, include_gedtrack = TRUE)

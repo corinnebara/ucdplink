@@ -2,9 +2,7 @@
 % Please edit documentation in R/gedprep.R
 \name{gedprep}
 \alias{gedprep}
-\title{Takes UCDP GED and processes it to:
-a) divide multi-month events into separate one-month events (fatalities evenly divided between them)
-b) divide events by coalition actors to the coalition-constituting actors (fatalities evenly divided between them)}
+\title{Process UCDP GED Data for Event Splitting and Coalition Attribution}
 \usage{
 gedprep()
 }
@@ -12,9 +10,18 @@ gedprep()
 UCDP GED processed (with more rows than the original)
 }
 \description{
-Takes UCDP GED and processes it to:
-a) divide multi-month events into separate one-month events (fatalities evenly divided between them)
-b) divide events by coalition actors to the coalition-constituting actors (fatalities evenly divided between them)
+This function processes UCDP GED data to:
+\itemize{
+\item \strong{(a)} Divide multi-month events into separate one-month events (with fatalities evenly divided among the months).
+\item \strong{(b)} Divide events by coalition actors among the coalition-constituting actors (with fatalities evenly divided between them).
+}
+}
+\note{
+When using this function, please ensure that you correctly attribute the source data:
+
+UCDP Georeferenced Event Dataset (GED) Global version 24.1 from the Uppsala Conflict Data Program.
+
+For citation details, refer to the UCDP website: https://ucdp.uu.se/downloads/
 }
 \examples{
 gedprep()

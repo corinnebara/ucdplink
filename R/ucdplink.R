@@ -1,4 +1,4 @@
-#' Creates a UCDP conflict-month dataset with information on various forms of violence from UCDP GED, linked via actors or space
+#' Creates a UCDP conflict-month dataset with information on various forms of violence from UCDP GED, linked via actors or location.
 #'
 #' @param postwar_months How many inactive months to add to each episode. Default is 0 (only active conflict). Add 5000 if you want all possible postwar months until the end of the dataset.
 #' @param include_alqaida Whether to include conflict 418 (US-al-Qaida), default is to exclude, as this conflict did not take place on US territory.
@@ -7,9 +7,9 @@
 #' @param buffer_percent How much buffer to add around each conflict zone (in percent, numeric from 0 to 100). Default is no buffer.
 #' @param clipcountry Whether to clip conflict zones at the borders of the country/countries primarily affected by the conflict. Default is to clip.
 #' @param divide_deaths For events that fall into multiple conflict zones: use full casualties in each or divide deaths between the conflicts? Default is to use full.
-#' @param include_gedtrack Whether to also return a version of GED in which event has information on how it was linked to the conflict-month dataset.
+#' @param include_gedtrack Whether to also return a version of GED in which event has information on how it was linked to the conflict-month dataset. Default is FALSE.
 #'
-#' @return A conflict-month dataset based on UCDP conflict data, with casualty counts from various forms of violence from UCDP GED
+#' @return A conflict-month dataset with casualty counts from various forms of violence
 #' @export
 #'
 #' @importFrom utils download.file unzip
@@ -22,6 +22,14 @@
 #' @import cshapes
 #' @import future
 #' @import furrr
+#'
+#' @note The code in this package is licensed under GPL-3, but the final dataset produced is licensed under CC BY 4.0.
+#' @note When using this function, please ensure that you correctly attribute the source data:
+#' @note UCDP/PRIO Armed Conflict Dataset version 24.1 from the Uppsala Conflict Data Program.
+#' @note UCDP Georeferenced Event Dataset (GED) Global version 24.1 from the Uppsala Conflict Data Program.
+#' @note For UCDP citation details, refer to the UCDP website: https://ucdp.uu.se/downloads/
+#' @note WZONE: Zones of Armed Conflicts v9.0
+#' @note For WZONE citation details see https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/PUWJEU
 #'
 #' @examples
 #' ucdplink(include_alqaida = FALSE, start_year = 1999, end_year = 2010, include_gedtrack = TRUE)
@@ -93,6 +101,9 @@ ucdplink <- function(postwar_months = 0,
   if (include_gedtrack) {
     assign("gedtrack", gedtrack, envir = .GlobalEnv)
   }
+
+  # Close all open connections
+  closeAllConnections()
 
   # Return only final conflict-month dataset as a default
   return(basedata)
