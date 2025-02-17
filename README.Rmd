@@ -102,11 +102,10 @@ The function takes no arguments:
 preppedged <- gedprep()
 ```
 
-<<<<<<< HEAD
 ## Work in Progress
 
 In the future, we plan to allow users to choose the UCDP version they want to work with. As of now, the package only works with the (currently) newest version of UCDP, i.e., v24.
-=======
+
+
 When using this approach please cite:
 Bara, Corinne & Maurice P. Schumann, "Who, what, and where? Linking violence to civil wars", Research & Politics (2025).
->>>>>>> 386d696045f79409291a9eed16eec2568ff612ba
