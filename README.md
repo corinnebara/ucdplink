@@ -11,8 +11,7 @@ The rationale for this procedure is described in the article: Bara,
 Corinne & Maurice P. Schumann, “Who, what, and where? Linking violence
 to civil wars”, Research & Politics (2025).
 
-For more details on the variables included in final linked dataset
-please consult the Codebook.
+Please cite the article when using this data or package.
 
 **The logic in brief:** Civil wars are more than battles between
 governments and rebels; they involve a multitude of actors who
@@ -25,34 +24,36 @@ from different forms of war-related violence to specific civil wars
 using information on the actors involved in the event, and on the event
 location.
 
-The main function **ucdplink** downloads the UCDP/PRIO Armed Conflict
-Dataset (ACD) and turns it from annual data into a conflict-month
-dataset. It then takes the UCDP Georeferenced Event Dataset (GED) and
-links casualties from different forms of violence (state-based,
-one-sided, non-state) to the conflict episodes in which this violence
-(most likely) takes place. The linking is done via the actors involved
-in the violence, and - if that is not possible - via the location of the
-event, using information on the location of conflicts from the WZONE
-Conflict Zones Data. The result is a conflict-month dataset with
-information on monthly casualties from various forms of violence,
-explained in detail in the Codebook.
+The main function **ucdplink** produces a conflict-month dataset with
+information on monthly casualties from various forms of violence. For
+more details on the variables included in final dataset please consult
+the
+[Codebook](https://github.com/corinnebara/ucdplink/releases/download/v1.0.0/Codebook.pdf).
+The procedure has three steps:
 
-Two helper functions used in the process may be useful for users even if
-they are not interested in the above violence linking procedure:
+1.  It downloads the UCDP/PRIO Armed Conflict Dataset (ACD) and turns it
+    from annual data into a conflict-month dataset. This is done in the
+    function **acdtomonthly**, which may be useful for users even if
+    they are not interested in violence linking.
 
-The function **acdtomonthly** downloads the UCDP ACD, which is annual
-conflict data, and turns it into a conflict-month dataset with some
-user-chosen parameters.
+2.  It then downloads the UCDP Georeferenced Event Dataset (GED) and
+    performs some common data wrangling steps, namely splitting
+    multi-month events into separate monthly events with casualty counts
+    evenly divided between them, and splitting events perpetrated by
+    coalition actors among the coalition-constituting actors. This is
+    done in the function **gedprep,** which may also be useful even for
+    users not interested in violence linking.
 
-The function **gedprep** downloads the UCDP GED and performs some common
-data wrangling steps, namely splitting multi-month events into separate
-monthly events with casualty counts evenly divided between them, and
-splitting events perpetrated by coalition actors among the
-coalition-constituting actors, again with casualty counts evenly divided
-between them.
+3.  Finally, the function links casualties from different forms of
+    violence (state-based, one-sided, non-state) to the conflict
+    episodes in which this violence (most likely) takes place. The
+    linking is done via the actors involved in the violence, and - if
+    that is not possible - via the location of the event, using
+    information on the location of conflicts from the WZONE Conflict
+    Zones Data.
 
 The package currently processes UCDP data versions 24.1. When using this
-package, make sure you correctly cite the source data.
+package, make sure you also correctly cite the source data.
 
 For the function **acdtomonthly**: Cite UCDP/PRIO Armed Conflict Dataset
 v.24.1. For citation details, see [UCDP Dataset Download
@@ -80,6 +81,22 @@ library(ucdplink)
 You also need the `dplyr`, `tidyr`, `stringr`, `readr`,
 `lubridate`, `sf`, `cshapes`, `future`, and `furrr` packages. R will try
 to install these dependencies if not already installed.
+
+## The Final Data
+
+**Note:** Running the `ucdplink` function may take a considerable amount
+of time due to computationally intensive spatial operations. Users who
+are happy with our default choices (see below) can also simply download
+the final dataset. It includes conflicts from 1989 to 2023 while they
+are active, and includes all inactive months until the end of 2023.
+Users can simply filter the amount of postwar months they want included
+for each conflict episode via the *postwarmonth* variable.
+
+- [Final Dataset
+  Excel](https://github.com/corinnebara/ucdplink/releases/download/v1.0.0/Final_dataset.xlsx)
+
+- [Final Dataset R
+  Data](https://github.com/corinnebara/ucdplink/releases/download/v1.0.0/Final_dataset.rds)
 
 ## ucdplink
 
@@ -148,10 +165,11 @@ preppedged <- gedprep()
 
 ## Work in Progress
 
-In the future, we plan to allow users to choose the UCDP version they
-want to work with. As of now, the package only works with the
-(currently) newest version of UCDP, i.e., v24.
+- In the future, we plan to allow users to choose the UCDP version they
+  want to work with. As of now, the package only works with the
+  (currently) newest version of UCDP, i.e., v24.
 
-When using this approach please cite: Bara, Corinne & Maurice P.
-Schumann, “Who, what, and where? Linking violence to civil wars”,
-Research & Politics (2025).
+- We also plan to implement an additional user choice to only link those
+  forms of violence that can be linked via actor identifiers (battle,
+  rebel one-sided violence, and inter-rebel fighting), and forego the
+  more time-consuming spatial linking.
