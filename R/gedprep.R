@@ -22,6 +22,7 @@
 gedprep <- function() {
 
   # Use helper function to load GED, OSV, and NSV datasets needed in this code
+  message("This process may take a minute or two to complete")
   ged <- downloaducdp("ged")
   osv <- downloaducdp("osv")
   nsv <- downloaducdp("nsv")

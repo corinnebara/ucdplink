@@ -19,8 +19,9 @@
 #' @note For citation details, refer to the UCDP website: https://ucdp.uu.se/downloads/
 #'
 #' @examples
+#'
+#' acdtomonthly(postwar_months = 0, include_alqaida = FALSE, start_year = 1989, end_year = 2023)
 #' acdtomonthly(postwar_months = 5000)
-#' acdtomonthly(start_year = 2015, end_year = 2023,include_alqaida = TRUE,postwar_months = 24)
 #' acdtomonthly()
 acdtomonthly <- function(
     postwar_months = 0,

@@ -34,7 +34,8 @@ UCDP/PRIO Armed Conflict Dataset version 24.1 from the Uppsala Conflict Data Pro
 For citation details, refer to the UCDP website: https://ucdp.uu.se/downloads/
 }
 \examples{
+
+acdtomonthly(postwar_months = 0, include_alqaida = FALSE, start_year = 1989, end_year = 2023)
 acdtomonthly(postwar_months = 5000)
-acdtomonthly(start_year = 2015, end_year = 2023,include_alqaida = TRUE,postwar_months = 24)
 acdtomonthly()
 }

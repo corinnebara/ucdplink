@@ -23,7 +23,7 @@ from different forms of war-related violence to specific civil wars
 using information on the actors involved in the event, and on the event
 location.
 
-The main function **ucdplink** takes the UCDP/PRIO Armed Conflict
+The main function **ucdplink** downloads the UCDP/PRIO Armed Conflict
 Dataset (ACD) and turns it from annual data into a conflict-month
 dataset. It then takes the UCDP Georeferenced Event Dataset (GED) and
 links casualties from different forms of violence (state-based,
@@ -38,11 +38,11 @@ explained in detail in the Codebook.
 Two helper functions used in the process may be useful for users even if
 they are not interested in the above violence linking procedure:
 
-The function **acdtomonthly** takes the UCDP ACD, which is annual
+The function **acdtomonthly** downloads the UCDP ACD, which is annual
 conflict data, and turns it into a conflict-month dataset with some
 user-chosen parameters.
 
-The function **gedprep** takes the UCDP GED and performs some common
+The function **gedprep** downloads the UCDP GED and performs some common
 data wrangling steps, namely splitting multi-month events into separate
 monthly events with casualty counts evenly divided between them, and
 splitting events perpetrated by coalition actors among the
@@ -72,6 +72,7 @@ You can install the package from github as follows:
 library(devtools)
 
 devtools::install_github("corinnebara/ucdplink")
+library(ucdplink)
 ```
 
 You also need the `dplyr`, `tidyr`, `stringr`, `readr`,
@@ -111,7 +112,7 @@ The function takes the following arguments:
   dataset. Default is to not include.
 
 ``` r
-linkeddata <- ucdplink(postwar_months = 12, include_alqaida = TRUE, start_year = 1999, end_year = 2010, buffer_percent = 10, clipcountry = FALSE, divide_deaths = TRUE, include_gedtrack = TRUE)
+linkeddata <- ucdplink(postwar_months = 0, include_alqaida = FALSE, start_year = 1989, end_year = 2023, buffer_percent = 0, clipcountry = TRUE, divide_deaths = FALSE, include_gedtrack = FALSE)
 ```
 
 ## acdtomonthly
@@ -132,7 +133,7 @@ The function takes the following arguments:
   2023).
 
 ``` r
-monthlydata <- acdtomonthly(postwar_months = 24, include_alqaida = TRUE, start_year = 1993, end_year = 2020)
+monthlydata <- acdtomonthly(postwar_months = 0, include_alqaida = FALSE, start_year = 1989, end_year = 2023)
 ```
 
 ## gedprep
@@ -142,3 +143,9 @@ The function takes no arguments:
 ``` r
 preppedged <- gedprep()
 ```
+
+## Work in Progress
+
+In the future, we plan to allow users to choose the UCDP version they
+want to work with. As of now, the package only works with the
+(currently) newest version of UCDP, i.e., v24.

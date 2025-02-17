@@ -54,8 +54,6 @@ WZONE: Zones of Armed Conflicts v9.0
 For WZONE citation details see https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/PUWJEU
 }
 \examples{
-ucdplink(include_alqaida = FALSE, start_year = 1999, end_year = 2010, include_gedtrack = TRUE)
-\dontrun{
-  ucdplink(postwar_months = 24, buffer_percent = 20, clipcountry = FALSE, divide_deaths = TRUE)
-}
+ucdplink(postwar_months = 0, include_alqaida = FALSE, start_year = 1999, end_year = 2010,
+buffer_percent = 0, clipcountry = TRUE, divide_deaths = FALSE, include_gedtrack = FALSE)
 }
