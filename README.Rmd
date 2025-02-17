@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 
 The goal of **ucdplink** is to link data on violent events from the Uppsala Conflict Data Program (UCDP) Georeferenced Event Dataset (GED) to armed conflicts listed in the UCDP Armed Conflict Dataset (ACD).
 
-The rationale for this procedure is described in the article: Bara, Corinne & Maurice P. Schumann, "Who, what, and where? Linking violence to civil wars", Research & Politics (2025).
+The rationale for this procedure is described in the article: Bara, Corinne & Maurice P. Schumann, "Who, what, and where? Linking violence to civil wars", *Research & Politics* (2025).
 
 Please cite the article when using this data or package.
 

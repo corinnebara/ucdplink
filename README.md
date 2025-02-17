@@ -9,7 +9,7 @@ to armed conflicts listed in the UCDP Armed Conflict Dataset (ACD).
 
 The rationale for this procedure is described in the article: Bara,
 Corinne & Maurice P. Schumann, “Who, what, and where? Linking violence
-to civil wars”, Research & Politics (2025).
+to civil wars”, *Research & Politics* (2025).
 
 Please cite the article when using this data or package.
 
@@ -26,8 +26,8 @@ location.
 
 The main function **ucdplink** produces a conflict-month dataset with
 information on monthly casualties from various forms of violence. For
-more details on the variables included in final dataset please consult
-the
+more details on the variables included in the final dataset please
+consult the
 [Codebook](https://github.com/corinnebara/ucdplink/releases/download/v1.0.0/Codebook.pdf).
 The procedure has three steps:
 
@@ -106,7 +106,7 @@ The function takes the following arguments:
   Default is 0 (only active conflict). Add 5000 if you want all possible
   postwar months until the end of the dataset.
 
-- include_alqaida: Whether to include conflict 418 (US-al-Qaida),
+- include_alqaida: Whether to include conflict 418 (US vs. al-Qaida),
   default is to exclude, as this conflict did not take place on US
   territory.
 
@@ -130,6 +130,9 @@ The function takes the following arguments:
   event has information on how it was linked to the conflict-month
   dataset. Default is to not include.
 
+Please refer to Bara & Schumann (2025) for a discussion on the
+implications of different user choices.
+
 ``` r
 linkeddata <- ucdplink(postwar_months = 0, include_alqaida = FALSE, start_year = 1989, end_year = 2023, buffer_percent = 0, clipcountry = TRUE, divide_deaths = FALSE, include_gedtrack = FALSE)
 ```
@@ -142,7 +145,7 @@ The function takes the following arguments:
   Default is 0 (only active conflict). Add 5000 if you want all possible
   postwar months until the end of the dataset.
 
-- include_alqaida: Whether to include conflict 418 (US-al-Qaida),
+- include_alqaida: Whether to include conflict 418 (US vs. al-Qaida),
   default is to exclude, as this conflict did not take place on US
   territory.
 
