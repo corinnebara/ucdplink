@@ -43,7 +43,7 @@ finalize <- function(basedata) {
   # Final variable selection and put in right order
   basedata <- basedata %>% select(conflict_id, epi_id, mdate, year, active, postwarmonth, location, type_of_conflict, incompatibility,
                           territory_name, side_a, side_a_id, side_a_2nd, side_b, side_b_id, sideb_constant, side_b_2nd,
-                          start_date, start_date2, gwno_a, gwno_a_2nd, gwno_b_2nd, gwno_loc, region, version, missingzone,
+                          start_date, start_date2, gwno_a, gwno_a_2nd, gwno_b_2nd, region, version, missingzone,
                           battledeaths, collateralciv, rebelosv, interreb, interreb_collciv, zone_wrv, zone_wrv_civ, zone_osv,
                           zone_nsv, zone_nsv_collciv, govosv, confgovosv, combatantosv, nsagosv, internsag, internsag_collciv, communal)
 

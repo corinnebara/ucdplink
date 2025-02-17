@@ -20,6 +20,7 @@ The goal of **ucdplink** is to link data on violent events from the Uppsala Conf
 
 The rationale for this procedure is described in the article:
 Bara, Corinne & Maurice P. Schumann, "Who, what, and where? Linking violence to civil wars", Research & Politics (2025).
+
 For more details on the variables included in final linked dataset please consult [link to codebook]
 
 **The logic in brief:** Civil wars are more than battles between governments and rebels; they involve a multitude of actors who perpetrate different forms of violence linked to the war in some way. In practice, however, linking various forms of violence to one another and attributing them to a specific civil war remains a challenge, conceptually and practically. The ucdplink package solves the practical aspects of the violence attribution problem and links casualty counts from different forms of war-related violence to specific civil wars using information on the actors involved in the event, and on the event location.

@@ -9,9 +9,10 @@ to armed conflicts listed in the UCDP Armed Conflict Dataset (ACD).
 
 The rationale for this procedure is described in the article: Bara,
 Corinne & Maurice P. Schumann, “Who, what, and where? Linking violence
-to civil wars”, Research & Politics (2025). For more details on the
-variables included in final linked dataset please consult \[link to
-codebook\]
+to civil wars”, Research & Politics (2025).
+
+For more details on the variables included in final linked dataset
+please consult \[link to codebook\]
 
 **The logic in brief:** Civil wars are more than battles between
 governments and rebels; they involve a multitude of actors who
